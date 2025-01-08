@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Detail of {{ film.title }}
+{% endblock %}
+
+{% block content %}
+  <h1>{{ film.title }}</h1>
+  <p>{{ film.overview }}</p>
+{% endblock %}

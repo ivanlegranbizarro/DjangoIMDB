@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  IMDB Clone
+{% endblock %}
+
+{% block content %}
+  <h1>IMDB Clone</h1>
+  <hr />
+
+  <div class="row row-cols-5">
+    {% for film in films %}
+      <div class="mb-5" style="width: 18rem;">
+        <img src="{{ film.poster }}" class="card-img-top" alt="{{ film.title }}" style="height: 300px; object-fit: cover;" />
+
+        <div class="card-body">
+          <h4>
+            <i class="bi bi-star-fill text-warning"></i>
+            <span class="me-4">{{ random_number }}</span>
+            <i class="bi bi-star text-primary"></i>
+          </h4>
+          <h5 class="card-title"><a href="{% url 'films:detail' film.id %}">{{ film.title }}</a></h5>
+        </div>
+      </div>
+    {% empty %}
+      <p>No films found.</p>
+    {% endfor %}
+  </div>
+{% endblock %}

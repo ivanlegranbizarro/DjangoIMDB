@@ -18,9 +18,16 @@ class Film(models.Model):
         CRIME = "CRIME", "Crime"
         FAR_WEST = "FAR_WEST", "Far West"
 
+    class Certification(models.TextChoices):
+        G = "G", "G"
+        PG = "PG", "PG"
+        PG_13 = "PG-13", "PG-13"
+        R = "R", "R"
+        NC_17 = "NC-17", "NC-17"
+
     title = models.CharField(max_length=250)
     released = models.DateField(auto_now=False, auto_now_add=False)
-    certificate = models.CharField(max_length=3)
+    certificate = models.CharField(max_length=5, choices=Certification.choices)
     duration = models.DurationField()
     genre = models.CharField(max_length=250, choices=Genre.choices)
     director = models.CharField(max_length=250)
