@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load custom_filters %}
 
 {% block title %}
   Detail of {{ film.title }}
@@ -6,5 +7,33 @@
 
 {% block content %}
   <h1>{{ film.title }}</h1>
-  <p>{{ film.overview }}</p>
+  <div class="row">
+    <div class="col-4">
+      <img src="{{ film.poster }}" alt="{{ film.title }}" class="img-fluid" />
+    </div>
+    <div class="col-8">
+      <p>
+        <span class="badge rounded-pill text-bg-primary">{{ film.genre }}</span>
+      </p>
+      <p>{{ film.released|date:'Y' }} - {{ film.certificate }} - {{ film.duration|format_duration }}</p>
+      <p>{{ film.overview }}</p>
+      <div class="alert alert-light" role="alert">
+        IMDB rating:
+        <i class="bi bi-star-fill text-warning"></i>
+        <span class="mx-3">{{ random_number }}/10</span>
+        Your rating:
+        <i class="bi bi-star text-primary"></i>
+        <span class="mx-3">{{ random_number }}/10</span>
+      </div>
+
+      <h2>Top Cast</h2>
+      <ul class="list-group">
+        <li class="list-group-item">{{ film.star1 }}</li>
+        <li class="list-group-item">{{ film.star2 }}</li>
+        <li class="list-group-item">{{ film.star3 }}</li>
+        <li class="list-group-item">{{ film.star4 }}</li>
+      </ul>
+      <h5>Director: {{ film.director }}</h5>
+    </div>
+  </div>
 {% endblock %}

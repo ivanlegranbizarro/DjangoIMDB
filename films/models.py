@@ -28,7 +28,7 @@ class Film(models.Model):
     title = models.CharField(max_length=250)
     released = models.DateField(auto_now=False, auto_now_add=False)
     certificate = models.CharField(max_length=5, choices=Certification.choices)
-    duration = models.DurationField()
+    duration = models.IntegerField(default=0)
     genre = models.CharField(max_length=250, choices=Genre.choices)
     director = models.CharField(max_length=250)
     star1 = models.CharField(max_length=250)
