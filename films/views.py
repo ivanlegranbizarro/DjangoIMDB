@@ -66,7 +66,7 @@ def homepage(request):
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
     random_number = round(random.uniform(1, 10), 2)
-    context = {"films": films, "random_number": random_number, "page_obj": page_obj}
+    context = {"random_number": random_number, "page_obj": page_obj}
     return render(request, "films/homepage.html", context)
 
 
